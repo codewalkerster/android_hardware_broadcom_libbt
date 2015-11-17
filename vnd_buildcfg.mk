@@ -1,4 +1,4 @@
-intermediates := $(local-intermediates-dir)
+generated_sources := $(local-generated-sources-dir)
 
 ifneq ($(BOARD_BLUEDROID_VENDOR_CONF),)
 SRC := $(BOARD_BLUEDROID_VENDOR_CONF)
@@ -9,11 +9,11 @@ ifeq (,$(wildcard $(SRC)))
 ifeq ($(BLUETOOTH_HCI_USE_USB), true)
 SRC := $(call my-dir)/include/vnd_generic_usb.txt
 else
- SRC := $(call my-dir)/include/vnd_generic.txt
+SRC := $(call my-dir)/include/vnd_generic.txt
 endif
 endif
 endif
-GEN := $(intermediates)/vnd_buildcfg.h
+GEN := $(generated_sources)/vnd_buildcfg.h
 TOOL := $(TOP_DIR)external/bluetooth/bluedroid/tools/gen-buildcfg.sh
 
 $(GEN): PRIVATE_PATH := $(call my-dir)
